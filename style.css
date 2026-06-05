@@ -1,0 +1,488 @@
+/* ===========================
+   CONFIGURAÇÕES GERAIS
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #32373d;
+  color: #333;
+}
+
+/* ===========================
+   TELA DE LOGIN
+   =========================== */
+#tela-login {
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+#tela-login h2 {
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+#tela-login p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#tela-login .formulario {
+  text-align: left;
+}
+
+/* ===========================
+   CABEÇALHO
+   =========================== */
+header {
+  background-color: #1a5276;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ===========================
+   MENU DE NAVEGAÇÃO
+   =========================== */
+nav {
+  background-color: #1f618d;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.btn-menu {
+  background-color: #2e86c1;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-menu:hover {
+  background-color: #1a5276;
+}
+
+.btn-menu.ativo {
+  background-color: #f39c12;
+  font-weight: bold;
+}
+
+/* Estilo personalizado para o Botão Sair */
+.btn-menu.btn-sair {
+  background-color: #e74c3c;
+}
+
+.btn-menu.btn-sair:hover {
+  background-color: #c0392b;
+}
+
+/* ===========================
+   TELAS (cada seção do sistema)
+   =========================== */
+.tela {
+  display: none; /* esconde todas as telas por padrão */
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.tela.ativa {
+  display: block; /* mostra só a tela ativa */
+}
+
+.tela h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #1a5276;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.tela h3 {
+  font-size: 17px;
+  margin: 20px 0 10px;
+  color: #555;
+}
+
+.tela > p {
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* ===========================
+   CARDS DO INÍCIO
+   =========================== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  flex: 1;
+  min-width: 150px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.card h3 {
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.card p {
+  font-size: 13px;
+}
+
+.card.azul   { background-color: #2e86c1; }
+.card.verde  { background-color: #1e8449; }
+.card.laranja { background-color: #d35400; }
+.card.vermelho { background-color: #c0392b; }
+
+.dica {
+  margin-top: 15px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ===========================
+   FORMULÁRIOS
+   =========================== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.formulario label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+}
+
+.formulario input,
+.formulario select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: #2e86c1;
+}
+
+/* ===========================
+   BOTÕES
+   =========================== */
+.btn-principal {
+  background-color: #2e86c1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.btn-principal:hover {
+  background-color: #1a5276;
+}
+
+.btn-principal.verde {
+  background-color: #1e8449;
+}
+
+.btn-principal.verde:hover {
+  background-color: #145a32;
+}
+
+.btn-principal.laranja {
+  background-color: #d35400;
+}
+
+.btn-principal.laranja:hover {
+  background-color: #a04000;
+}
+
+.btn-excluir {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-excluir:hover {
+  background-color: #922b21;
+}
+
+.btn-limpar {
+  background-color: #922b21;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-limpar:hover {
+  background-color: #566573;
+}
+
+/* ===========================
+   TABELAS
+   =========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+table thead {
+  background-color: #1a5276;
+  color: white;
+}
+
+table th, table td {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+table tbody tr:hover {
+  background-color: #eaf3fb;
+}
+
+.vazio {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  padding: 20px !important;
+}
+
+/* ===========================
+   SITUAÇÃO DO ESTOQUE (badge)
+   =========================== */
+.badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.badge.ok     { background-color: #1e8449; }
+.badge.baixo  { background-color: #e67e22; }
+.badge.zerado { background-color: #c0392b; }
+
+/* ===========================
+   BADGE DO HISTÓRICO
+   =========================== */
+.badge.entrada { background-color: #1e8449; }
+.badge.saida   { background-color: #c0392b; }
+
+/* ===========================
+   BUSCA E FILTROS
+   =========================== */
+#busca-estoque {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+#busca-estoque:focus {
+  border-color: #2e86c1;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filtros select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* ===========================
+   MENSAGEM DE FEEDBACK
+   =========================== */
+.mensagem {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.mensagem.escondida {
+  display: none;
+}
+
+.mensagem.sucesso {
+  background-color: #1e8449;
+}
+
+.mensagem.erro {
+  background-color: #c0392b;
+}
+
+/* ===========================
+   RESPONSIVO (celular)
+   =========================== */
+@media (max-width: 600px) {
+  header {
+    padding: 15px 10px;
+  }
+
+  header h1 {
+    font-size: 19px;
+  }
+
+  header p {
+    font-size: 12px;
+  }
+
+  /* Menu adaptável em grade de 2 colunas */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .btn-menu {
+    font-size: 12px;
+    padding: 8px 4px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .btn-menu.btn-sair {
+    grid-column: span 2;
+  }
+
+  /* Redução de margens externas para dar mais espaço na tela */
+  .tela {
+    margin: 10px 6px;
+    padding: 14px;
+  }
+
+  .tela h2 {
+    font-size: 18px;
+  }
+
+  .cards {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Ajuste crucial para formulários e caixas de seleção grandes */
+  .formulario {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .formulario label {
+    font-size: 13px;
+  }
+
+  .formulario input,
+  .formulario select,
+  .filtros select,
+  #busca-estoque {
+    padding: 7px 10px;
+    font-size: 13px; 
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Otimização dos botões principais */
+  .btn-principal {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  /* COMPACTAÇÃO DO BOTÃO EXCLUIR:*/
+  .btn-excluir {
+    padding: 3px 6px;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    width: auto;
+  }
+
+  /* COMPACTAÇÃO COMPLETA DAS TABELAS:*/
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+  }
+
+  table th, table td {
+    padding: 6px 8px; 
+    font-size: 12px;   
+  }
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Estoque - SEMED Sítio Novo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho do sistema (Oculto no início) -->
+  <header id="app-header" style="display: none;">
+    <div class="cabecalho-conteudo">
+      <h1>📦 SEMED - ESTOQUE</h1>
+      <p>Secretaria Municipal de Educação de Sítio Novo – MA</p>
+    </div>
+  </header>
+
+  <!-- Menu de navegação entre as telas (Oculto no início) -->
+  <nav id="app-nav" style="display: none;">
+    <button class="btn-menu ativo" onclick="mostrarTela('tela-inicio')">🏠 Início</button>
+    <button class="btn-menu" onclick="mostrarTela('tela-cadastro')">➕ Cadastrar Produto</button>
+    <button class="btn-menu" onclick="mostrarTela('tela-entrada')">📥 Registrar Entrada</button>
+    <button class="btn-menu" onclick="mostrarTela('tela-saida')">📤 Registrar Saída</button>
+    <button class="btn-menu" onclick="mostrarTela('tela-estoque')">📋 Ver Estoque</button>
+    <button class="btn-menu" onclick="mostrarTela('tela-historico')">📜 Histórico</button>
+    <button class="btn-menu btn-sair" onclick="fazerLogout()">🚪 Sair</button>
+  </nav>
+
+  <!-- TELA: LOGIN -->
+  <div id="tela-login" class="tela ativa">
+    <div class="container-login">
+      <h2>🔐 Acesso ao Sistema</h2>
+      <h2>SEMED - ESTOQUE</h2>
+      <p>Insira suas credenciais para continuar.</p>
+      <p>TESTE: Usuário: admin / Senha: 123</p>
+      
+      <div class="formulario">
+        <label>Usuário:</label>
+        <input type="text" id="login-usuario" placeholder="Digite seu usuário">
+
+        <label>Senha:</label>
+        <input type="password" id="login-senha" placeholder="Digite sua senha">
+
+        <button class="btn-principal" onclick="fazerLogin()">Entrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELA: INÍCIO -->
+  <div id="tela-inicio" class="tela">
+    <h2>Bem-vindo ao Sistema!</h2>
+    <p>Este sistema foi desenvolvido para ajudar no controle de materiais do almoxarifado e da merenda escolar da SEMED.</p>
+
+    <!-- Cartões de resumo -->
+    <div class="cards">
+      <div class="card azul">
+        <h3 id="total-produtos">0</h3>
+        <p>Produtos Cadastrados</p>
+      </div>
+      <div class="card verde">
+        <h3 id="total-entradas">0</h3>
+        <p>Entradas Registradas</p>
+      </div>
+      <div class="card laranja">
+        <h3 id="total-saidas">0</h3>
+        <p>Saídas Registradas</p>
+      </div>
+      <div class="card vermelho">
+        <h3 id="total-baixo">0</h3>
+        <p>Produtos com Estoque Baixo</p>
+      </div>
+    </div>
+
+    <p class="dica">💡 Use o menu acima para navegar pelo sistema.</p>
+  </div>
+
+  <!-- TELA: CADASTRAR PRODUTO -->
+  <div id="tela-cadastro" class="tela">
+    <h2>➕ Cadastrar Novo Produto</h2>
+
+    <div class="formulario">
+      <label>Nome do Produto:</label>
+      <input type="text" id="nome-produto" placeholder="Ex: Arroz, Detergente, Papel...">
+
+      <label>Categoria:</label>
+      <select id="categoria-produto">
+        <option value="">-- Selecione --</option>
+        <option value="Merenda">Merenda Escolar</option>
+        <option value="Material de Escritório">Material de Escritório</option>
+        <option value="Material de Limpeza">Material de Limpeza</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <label>Unidade de Medida:</label>
+      <select id="unidade-produto">
+        <option value="">-- Selecione --</option>
+        <option value="unidade">Unidade</option>
+        <option value="kg">Kg</option>
+        <option value="litro">Litro</option>
+        <option value="caixa">Caixa</option>
+        <option value="pacote">Pacote</option>
+      </select>
+
+      <label>Quantidade Mínima (alerta de estoque baixo):</label>
+      <input type="number" id="minimo-produto" placeholder="Ex: 10" min="0">
+
+      <button class="btn-principal" onclick="cadastrarProduto()">Salvar Produto</button>
+    </div>
+
+    <!-- Lista de produtos cadastrados -->
+    <h3>Produtos Cadastrados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Unidade</th>
+          <th>Mínimo</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-produtos">
+        <tr><td colspan="5" class="vazio">Nenhum produto cadastrado ainda.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TELA: REGISTRAR ENTRADA -->
+  <div id="tela-entrada" class="tela">
+    <h2>📥 Registrar Entrada de Produto</h2>
+
+    <div class="formulario">
+      <label>Produto:</label>
+      <select id="produto-entrada">
+        <option value="">-- Selecione um produto --</option>
+      </select>
+
+      <label>Quantidade que Entrou:</label>
+      <input type="number" id="qtd-entrada" placeholder="Ex: 50" min="1">
+
+      <label>Data de Entrada:</label>
+      <input type="date" id="data-entrada">
+
+      <label>Observação (opcional):</label>
+      <input type="text" id="obs-entrada" placeholder="Ex: Recebido da prefeitura">
+
+      <button class="btn-principal verde" onclick="registrarEntrada()">Registrar Entrada</button>
+    </div>
+  </div>
+
+  <!-- TELA: REGISTRAR SAÍDA -->
+  <div id="tela-saida" class="tela">
+    <h2>📤 Registrar Saída de Produto</h2>
+
+    <div class="formulario">
+      <label>Produto:</label>
+      <select id="produto-saida">
+        <option value="">-- Selecione um produto --</option>
+      </select>
+
+      <label>Quantidade que Saiu:</label>
+      <input type="number" id="qtd-saida" placeholder="Ex: 10" min="1">
+
+      <label>Destino (escola ou setor):</label>
+      <input type="text" id="destino-saida" placeholder="Ex: Escola Mun. São João">
+
+      <label>Data de Saída:</label>
+      <input type="date" id="data-saida">
+
+      <label>Observação (opcional):</label>
+      <input type="text" id="obs-saida" placeholder="Ex: Entrega mensal">
+
+      <button class="btn-principal laranja" onclick="registrarSaida()">Registrar Saída</button>
+    </div>
+  </div>
+
+  <!-- TELA: VER ESTOQUE -->
+  <div id="tela-estoque" class="tela">
+    <h2>📋 Estoque Atual</h2>
+
+    <input type="text" id="busca-estoque" placeholder="🔍 Buscar produto..." oninput="filtrarEstoque()">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Quantidade</th>
+          <th>Unidade</th>
+          <th>Situação</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-estoque">
+        <tr><td colspan="5" class="vazio">Nenhum produto no estoque ainda.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TELA: HISTÓRICO -->
+  <div id="tela-historico" class="tela">
+    <h2>📜 Histórico de Movimentações</h2>
+
+    <div class="filtros">
+      <select id="filtro-tipo" onchange="filtrarHistorico()">
+        <option value="todos">Todos</option>
+        <option value="entrada">Só Entradas</option>
+        <option value="saida">Só Saídas</option>
+      </select>
+      <button class="btn-limpar" onclick="limparHistorico()">🗑️ Limpar Histórico</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th>Destino/Obs</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-historico">
+        <tr><td colspan="5" class="vazio">Nenhuma movimentação registrada ainda.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mensagem de feedback para o usuário -->
+  <div id="mensagem" class="mensagem escondida"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
